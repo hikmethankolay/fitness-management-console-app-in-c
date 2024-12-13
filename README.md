@@ -6,7 +6,7 @@ The Fitness Management System is a project built using C with CMake for cross-pl
 
 ## **II. System Architecture**
 
-The system uses standard C and C# file input/output libraries with custom file operation functions designed for this project:
+The system uses standard C file input/output libraries with custom file operation functions designed for this project:
 
 - **file_read()** – Reads data from a file
 - **file_write()** – Deletes all existing data and writes new data to the file
