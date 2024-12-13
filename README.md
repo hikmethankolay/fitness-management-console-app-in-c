@@ -1,153 +1,114 @@
 # Fitness Management System App
 
-## 
+## **I. Introduction**
 
-<style>
-</style>
+The Fitness Management System is a project built using C with CMake for cross-platform support, along with Doxygen for code documentation and unit tests. It is a console application that uses keyboard inputs for navigation.
 
-**I. Introduction**
+## **II. System Architecture**
 
-Fitness Management system is a project that uses C with  CMake and C# with .NET for
-cross-platform support and Doxygen to document code and unit tests. It is a
-console app that uses keyboard inputs to navigate.
+The system uses standard C and C# file input/output libraries with custom file operation functions designed for this project:
 
-**II. System
-Architecture**  
-Whole management system uses standard C and C# file input/output library with
-file operation functions we created for this project, Which is:
+- **file_read()** – Reads data from a file
+- **file_write()** – Deletes all existing data and writes new data to the file
+- **file_edit()** – Modifies a specified record line
+- **file_line_delete()** – Deletes a specified record line
+- **file_append()** – Adds a new record at the end of the file
 
-·       file_read() – Reads data
-from file
+## **III. Functionalities**
 
-·       file_write() – Deletes all
-data and writes wanted data to file
+The system provides functionalities to view, register, update, and delete records through a menu-driven interface. Additional features include search and sort capabilities. The system manages the following types of data:
 
-·       file_edit() – changes
-specified record line
+### **a. Member Management:**
+- MemberID
+- Full Name
+- Birth Date
+- Phone Number
+- First Registration Date
 
-·       file_line_delete() –
-Deletes a specified record line
+### **b. Subscription Management:**
+- MemberID
+- Starting Date
+- Finishing Date
+- Subscription Tier
 
-·       file_append() – Adds a
-record at the end of file
+### **c. Class Management:**
+- Tutor Name
+- Date
+- Starting Hour
+- Finishing Hour
+- Student List
 
-**III. Functionalities**
+### **d. Payment Management:**
+- MemberID
+- Paid Amount
+- Payment Date
+- Next Payment Date
 
-In menu, user can see,
-register, update, delete a record he wants. We also have a search and sort
-feature. We can record these types of data’s:
+Additional features include:
+- **LCS System:** Warns users when entering very similar records.
+- **OTP System:** Requires users to enter a one-time password when logging in.
+- **Huffman Coding Algorithm:** Compresses files for efficient storage.
 
-**a. Member Management:**
+## **IV. Testing and Validation**
 
-·       MemberID
+The system has been thoroughly tested and documented using GoogleTest (gtest), CTest, and Xunit. The tests achieved 95% coverage with 100% success in unit test results.
 
-·       Full Name
+## **Requirements**
 
-·       Birth Date
+- **CMake** ≥ 3.12
+- **C++ Standard** ≥ 11
+- **GoogleTest** (for testing modules)
+- **Visual Studio Community Edition** (for Windows generator)
+- **Ninja** (for WSL/Linux)
 
-·       Phone Number
+## **Setup Development Environment**
 
-·       First Registration Date
+### **Step 1: Pre-commit Setup** (Run on Windows, May Affect WSL)
+Run `1-configure-pre-commit.bat` to copy the pre-commit script to `.git/hooks`. This script validates README.md, `.gitignore`, and Doxygen files, and formats the code using the AStyle tool.
 
-**b. Subscription Management:** 
+### **Step 2: Create Gitignore** (Run on Windows, May Affect WSL)
+If `.gitignore` is missing, execute `2-create-git-ignore.bat` to generate it.
 
-·        MemberID
+### **Step 3: Install Package Managers** (Only Windows)
+Run `3-install-package-manager.bat` to install `choco` and `scoop` package managers.
 
-·       Starting date
+### **Step 4: Install Required Applications** (Only Windows)
+Execute `4-install-windows-environment.bat` to install the necessary applications.
 
-·       Finishing Date
+### **Step 5: Setup WSL Environment** (Only WSL)
+Open PowerShell as administrator, enter WSL, navigate to the project folder, and run `4-install-wsl-environment.sh` to configure the WSL environment.
 
-·       Subscription Tier
+## **Generate Development Environment**
 
-**c. Class Management:**
+To generate a Visual Studio Community Edition project, run `9-clean-configure-app-windows.bat`. Alternatively, you can use CMake for project development within Visual Studio.
 
-·       Tutor Name
+## **Build, Test, and Package the Application**
 
-·       Date
+### **On Windows:**
+Run `7-build-app-windows.bat` to build, test, and generate packaged binaries for the application.
 
-·       Starting hour
+Additional scripts:
+- `7-build-doc-windows.bat`: Generate documentation only
+- `8-build-test-windows.bat`: Test the application only
 
-·       Finishing Hour
+### **On WSL:**
+Run `7-build-app-linux.sh` to build, test, and generate packaged binaries in the WSL environment.
 
-·       Student list
+## **Clean Project**
 
-**d. Payment Management:**
+Run `9-clean-project.bat` to clean all project outputs.
 
-·        MemberID
-
-·        Paid amount
-
-·        Payment Date
-
-·        Next Payment date
-
-We also have an LCS system that warns user when inputting
-a very similar record, OTP system that user have to enter a one time password
-when logging in and a Huffman coding Algorithm that compresses files.  
-**IV. Testing and Validation**
-
-We tested and documented whole system with gtest, Ctest
-and Xunit It has %95 coverage test and %100 success at unit test results
-
-## Requirements
-
-- CMake >= 3.12
-- C++ Standard >= 11
-- GoogleTest (for testing modules)
-- Visual Studio Communit Edition for Windows Generator
-- Ninja for WSL/Linux
-
-## Setup Development Environment
-
-### Step-1 (Run on Windows, Can Effect on WSL)
-
-Run 1-configure-pre-commit.bat file to copy 1-pre-commit script to .git/hooks that checkes. README.md, gitignore and doxygenfiles. Also format code with astyle tool
-
-### Step-2 (Run on Windows, Can Effect on WSL)
-
-If gitignore missing then you can create gitignore with 2-create-git-ignore.bat file run this file.
-
-### Step-3 (Only Windows)
-
-Install package managers that we will use to install applications. Run 3-install-package-manager.bat to install choco and scoop package managers
-
-### Step-4 (Only Windows)
-
-Run 4-install-windows-enviroment.bat to install required applications. 
-
-### Step-5 (Only WSL)
-
-Open powershell as admin and enter WSL then goto project folder and run 4-install-wsl-environment.sh to setup WSL environment
-
-## Generate Development Environment
-
-You can run 9-clean-configure-app-windows.bat to generate Visual Studio Communit Edition Project of this file. Or You can use Cmake project development with Visual Studio Community Edition
-
-## Build, Test and Package Application on Windows
-
-Run 7-build-app-windows.bat to build, test and generate packed binaries for your application on windows.
-
-Also you can run 7-build-doc-windows.bat to only generate documentation and 8-build-test-windows.bat to only test application. 
-
-## Build, Test and Package Application on WSL
-
-Run 7-build-app-linux.sh to build, test and generate packed binaries for your application on WSL environment.
-
-## Clean Project
-
-You can run 9-clean-project.bat to clean project outputs. 
-
-## Supported Platforms
+## **Supported Platforms**
 
 ![Ubuntu badge](assets/badge-ubuntu.svg)
-
 ![macOS badge](assets/badge-macos.svg)
-
 ![Windows badge](assets/badge-windows.svg)
 
-### Test Coverage Ratios
+## **Test Coverage Ratios**
 
-> **Note** : There is a known bug on doxygen following badges are in different folder but has same name for this reason in doxygen html report use same image for all content [Images with same name overwrite each other in output directory · Issue #8362 · doxygen/doxygen · GitHub](https://github.com/doxygen/doxygen/issues/8362). README.md and WebPage show correct badges.
+> **Note**: Due to a known bug in Doxygen, badges with the same name in different folders may overwrite each other in the output directory. Refer to the README.md and web pages for the correct badges.
+
+### **Coverage Comparison**
 
 | Coverage Type | Windows OS                                                             | Linux OS (WSL-Ubuntu 20.04)                                              |
 | ------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------ |
@@ -155,74 +116,13 @@ You can run 9-clean-project.bat to clean project outputs.
 | Branch Based  | ![Branch Coverage](assets/codecoveragelibwin/badge_branchcoverage.svg) | ![Branch Coverage](assets/codecoverageliblinux/badge_branchcoverage.svg) |
 | Method Based  | ![Method Coverage](assets/codecoveragelibwin/badge_methodcoverage.svg) | ![Method Coverage](assets/codecoverageliblinux/badge_methodcoverage.svg) |
 
-### Documentation Coverage Ratios
+### **Documentation Coverage Ratios**
 
 |                    | Windows OS                                                        | Linux OS (WSL-Ubuntu 20.04)                                         |
 | ------------------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
 | **Coverage Ratio** | ![Line Coverage](assets/doccoveragelibwin/badge_linecoverage.svg) | ![Line Coverage](assets/doccoverageliblinux/badge_linecoverage.svg) |
 
-#### Install Test Results to HTML Converter
-
-We are using [GitHub - inorton/junit2html: Turn Junit XML reports into self contained HTML reports](https://github.com/inorton/junit2html) to convert junit xml formatted test results to HTML page for reporting also we store logs during test. Use following commands to install this module with pip
-
-```bash
-pip install junit2html
-```
-
-### Github Actions
-
-This project also compiled and tested with Github Actions. If there is a missing setup or problem follow github action script for both Windows and WSL under
-
-`.github/workflows/cpp.yml`
-
-Github actions take too much time more than 1 hour take to complete build for Windows, MacOS and Linux. Also its paid operation for this reason we use offline batch scripts easy to use. 
-
-### Build App on Windows
-
-We have already configured script for build operations. `7-build-app-windows.bat` have complete all required tasks and copy outputs to release folder.  
-
-**Operation Completed in 11-15 minutes.**
-
-- Clean project outputs
-
-- Create required folders
-
-- Run doxygen for documentation
-
-- Run coverxygen for document coverage report
-
-- Run Report Generator for Documentation Coverage Report
-
-- Configure project for Visual Studio Community Edition
-
-- Build Project Debug and Release
-
-- Install/Copy Required Library and Headers
-
-- Run Tests 
-
-- Run OpeCppCoverage for Coverage Data Collection
-
-- Run Reportgenerator for Test Coverage Report
-
-- Copy output report to webpage folder
-
-- Run mkdocs to build webpage
-
-- Compress outputs to release folder, everything is ready for deployment. 
-
-### Build App on WSL/Linux
-
-We are running WSL on Windows 10 and solve our virtual machine problem. We make cross-platform development. After development before commit we run and test app on Windows and WSL with this scripts. To run on WSL you need to install WSL first. 
-
-you can use our public notes
-
-- https://github.com/coruhtech/vs-docker-wsl-cpp-development
-
-- [GitHub - ucoruh/ns3-wsl-win10-setup: ns3 windows 10 WSL2 setup and usage](https://github.com/ucoruh/ns3-wsl-win10-setup)
-
-After WSL installation, right click and open WSL bash and run `7-build-app-linux.sh` this will provide similart task with windows and will generate report and libraries on release folder. 
-
-----
+---
 
 $End-Of-File$
+
